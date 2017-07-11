@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ZiRuMockDemo</string>
+    <string name="main_menu_flat_entire_rent">首页</string>
+    <string name="main_menu_ziruyu">自如寓</string>
+    <string name="main_menu_minsu">民宿/驿站</string>
+    <string name="main_menu_life">生活服务</string>
+</resources>
