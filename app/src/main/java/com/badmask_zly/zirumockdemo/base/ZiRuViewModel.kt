@@ -2,8 +2,6 @@ package com.badmask_zly.zirumockdemo.base
 
 import android.content.Intent
 import android.databinding.BaseObservable
-import android.support.annotation.IntegerRes
-import android.telecom.Call
 
 /**
  * Created by badmask_zly on 2017/7/11.
