@@ -5,8 +5,9 @@ import android.databinding.BaseObservable
 
 /**
  * Created by badmask_zly on 2017/7/11.
+ * 基类 viewModel
  */
-class ZiRuViewModel : BaseObservable() {
+open class ZiRuViewModel : BaseObservable() {
 
 
     /**
@@ -24,20 +25,44 @@ class ZiRuViewModel : BaseObservable() {
     }
 
 
+
+    /**
+     * 启动 Activity 且带参数并接收返回值
+     */
+    fun startActivity(intent: Intent, requestCode: Int) {
+        if (null != mActivityActionListener) {
+            requestCode
+            mActivityActionListener.startActivityForResult(intent, requestCode)
+        }
+    }
+
+    /**
+     * 关闭 Activity 不返回数据
+     */
+    fun finishActivityForResult(requestCode: Int) {
+        if (null != mActivityActionListener) {
+            mActivityActionListener.finishActivityForResult(requestCode)
+        }
+    }
+
+    /**
+     * 关闭 Activity 返回数据
+     */
+    fun finishActivityForResult(requestCode: Int?, intent: Intent?) {
+        if (null != mActivityActionListener) {
+
+            mActivityActionListener.finishActivityForResult(requestCode, intent)
+        }
+    }
+
     /**
      * 描述 activity 动作的接口
      */
     interface ActivityActionListener {
 
-        fun startActivity(intent: Intent)
+        fun startActivityForResult(intent: Intent, requestCode: Int? = null)
 
-        fun startActivityForResult(intent: Intent, requestCode: Int)
-
-        fun finishActivity()
-
-        fun finishActivityForResult(resultCode: Int)
-
-        fun finishActivityForResult(resultCode: Int, intent: Intent)
+        fun finishActivityForResult(resultCode: Int? = null, intent: Intent? = null)
     }
 }
 
