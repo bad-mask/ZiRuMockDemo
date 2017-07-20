@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.badmask_zly.zirumockdemo.viewmodel.RentFragmentVM" />
+            type="com.badmask_zly.zirumockdemo.viewmodel.ZiRuYuFragmentVM" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

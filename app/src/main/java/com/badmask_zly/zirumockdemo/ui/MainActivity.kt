@@ -4,6 +4,10 @@ import android.databinding.Observable
 import com.badmask_zly.zirumockdemo.R
 import com.badmask_zly.zirumockdemo.base.ZiRuActivity
 import com.badmask_zly.zirumockdemo.databinding.ActivityMainBinding
+import com.badmask_zly.zirumockdemo.ui.life.fragment.LifeFramgent
+import com.badmask_zly.zirumockdemo.ui.minsu.fragment.MinSuFragment
+import com.badmask_zly.zirumockdemo.ui.rent.fragmnet.RentFragment
+import com.badmask_zly.zirumockdemo.ui.ziruyu.fragment.ZiRuYuFragment
 import com.badmask_zly.zirumockdemo.utils.LogUtil
 import com.badmask_zly.zirumockdemo.viewmodel.HomeTabVm
 
@@ -15,6 +19,11 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
         val MINSU = "minsu"
         val LIFE = "life"
     }
+
+    lateinit var mRentFragment: RentFragment
+    lateinit var mZiRuYuFramgent: ZiRuYuFragment
+    lateinit var mMinSUFramgent: MinSuFragment
+    lateinit var mLifeFramgent: LifeFramgent
 
     override fun initialize() {
         viewModel.selectedTab.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
