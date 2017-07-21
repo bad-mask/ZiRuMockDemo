@@ -12,7 +12,7 @@ import kotlin.reflect.KProperty
  * 创建一个自定义委托：
  * 创建一个 NotNull 的委托，它只能被赋值一次，如果第二次赋值，它就会抛出异常
  */
-private class NotNullSingleVauleVar<T> : ReadWriteProperty<Any?, T> {
+private class NotNullSingleVauleVar<T>() : ReadWriteProperty<Any?, T> {
 
     private var value: T? = null
 
@@ -30,7 +30,7 @@ private class NotNullSingleVauleVar<T> : ReadWriteProperty<Any?, T> {
  * 现在创建一个对象，然后添加函数使用自定义的委托
  */
 object DelegateExt {
-    fun <T> NotNullSingleVauleVar(): ReadWriteProperty<Any?, T> = NotNullSingleVauleVar()
+    fun <T> notNullSingleVauleVar(): ReadWriteProperty<Any?, T> = NotNullSingleVauleVar()
 
 }
 

@@ -8,3 +8,7 @@ and only when the property does not have a costom getter or setter. The type of 
 must not be a primitive type.
   Accessing a lateinit property before it has been initialized throws a special exception that clearly identifies the 
 property being accessed and the fact that it hasn't been initialized.
+
+2. 构造函数
+
+	Kotlin 中所有的构造函数默认是 public 的。要指定一个类的主构造函数的可见性，需要添加一个显示的 constructor 关键字。

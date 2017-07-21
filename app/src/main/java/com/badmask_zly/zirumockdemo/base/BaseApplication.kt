@@ -8,11 +8,13 @@ import com.badmask_zly.zirumockdemo.extensions.DelegateExt
  */
 class BaseApplication : Application() {
     companion object {
-        var instance: BaseApplication by DelegateExt.NotNullSingleVauleVar()
+        var instance: BaseApplication by DelegateExt.notNullSingleVauleVar()
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+        InitializeManager.get().setApplicationContext(instance)
+
     }
 }

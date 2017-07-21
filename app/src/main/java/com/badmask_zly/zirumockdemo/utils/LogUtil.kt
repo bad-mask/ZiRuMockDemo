@@ -5,7 +5,7 @@ import android.util.Log
 /**
  * Created by badmask_zly on 2017/7/11.
  *
- * kotlin 中没有 static 类型的 fun
+ * kotlin 中没有 static 关键字
  */
 
 /**
@@ -17,7 +17,7 @@ class LogUtil {
 
     companion object {
         var TAG = "ZiRu"
-        val isDebug = false
+        val isDebug = true
         fun d(msg: String, tag: String = TAG) {
             if (isDebug) {
                 Log.d(tag, msg)
