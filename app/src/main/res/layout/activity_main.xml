@@ -46,6 +46,7 @@
             app:viewModel="@{viewModel}" />
 
         <FrameLayout
+            android:id="@+id/main_activity_fl_fragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="0dp"

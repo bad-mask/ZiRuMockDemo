@@ -42,13 +42,31 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
         viewDataBinding.mainMenuLayout.mainMenuRlLife.isSelected = false
 
         when (viewModel.selectedTab.get()) {
-            RENT -> viewDataBinding.mainMenuLayout.mainMenuRlRent.isSelected = true
-            ZIRUYU -> viewDataBinding.mainMenuLayout.mainMenuRlZiruyu.isSelected = true
-            MINSU -> viewDataBinding.mainMenuLayout.mainMenuRlMinsu.isSelected = true
-            LIFE -> viewDataBinding.mainMenuLayout.mainMenuRlLife.isSelected = true
-            else -> viewDataBinding.mainMenuLayout.mainMenuRlRent.isSelected = true
+            RENT -> {
+                viewDataBinding.mainMenuLayout.mainMenuRlRent.isSelected = true
+                mRentFragment = RentFragment()
+                replaceFragmentByTag(getFragmentLayoutId(), mRentFragment, RENT)
+            }
+            ZIRUYU -> {
+                viewDataBinding.mainMenuLayout.mainMenuRlZiruyu.isSelected = true
+                mZiRuYuFramgent = ZiRuYuFragment()
+                replaceFragmentByTag(getFragmentLayoutId(), mZiRuYuFramgent, ZIRUYU)
+            }
+            MINSU -> {
+                viewDataBinding.mainMenuLayout.mainMenuRlMinsu.isSelected = true
+                mMinSUFramgent = MinSuFragment()
+                replaceFragmentByTag(getFragmentLayoutId(), mMinSUFramgent, MINSU)
+            }
+            LIFE -> {
+                viewDataBinding.mainMenuLayout.mainMenuRlLife.isSelected = true
+                mLifeFramgent = LifeFramgent()
+                replaceFragmentByTag(getFragmentLayoutId(), mLifeFramgent, LIFE)
+            }
+            else -> viewModel.selectedTab.set(MainActivity.RENT)
+
         }
     }
+
 
     override fun loadViewModel(): HomeTabVm {
         LogUtil.e("zly", "loadViewModel")
@@ -58,6 +76,10 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
     override fun loadLayoutId(): Int {
         return R.layout.activity_main
 
+    }
+
+    fun getFragmentLayoutId(): Int {
+        return R.id.main_activity_fl_fragment
     }
 
 

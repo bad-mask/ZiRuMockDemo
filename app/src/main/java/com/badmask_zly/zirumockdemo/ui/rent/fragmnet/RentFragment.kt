@@ -18,7 +18,9 @@ class RentFragment : ZiRuFragment<RentFragmentVM, FragmentRentBinding>() {
         return R.layout.fragment_rent
     }
 
+
+
     override fun initialize() {
-        // TODO
+
     }
 }

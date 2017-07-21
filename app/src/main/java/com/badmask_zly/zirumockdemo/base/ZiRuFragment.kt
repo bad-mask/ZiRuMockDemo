@@ -11,7 +11,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.android.databinding.library.baseAdapters.BR
+import com.badmask_zly.zirumockdemo.BR
 
 
 /**
@@ -29,9 +29,10 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
 
         lateinit var mContext: Context
 
-        lateinit var mRootView: View
-
     }
+
+    var mRootView: View? = null
+
 
     /**
      * Fragment 对应的 ViewModel
@@ -44,7 +45,7 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
      */
     lateinit var viewDataBinding: VDB
 
-    lateinit var mOnViewLoadListener: OnViewLoadListener
+    var mOnViewLoadListener: OnViewLoadListener? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,9 +73,8 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //开始加载数据
-        if (null != mOnViewLoadListener) {
-            mOnViewLoadListener.onLoadStarted()
-        }
+        mOnViewLoadListener?.onLoadStarted()
+
         // View 做缓存处理
         if (null == mRootView) {
 
@@ -113,11 +113,11 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
             //初始化，可以做逻辑处理
             initialize()
             // 数据加载完毕
-            if (null != mOnViewLoadListener) {
-                mOnViewLoadListener.onLoadFinished()
-            }
+            mOnViewLoadListener?.onLoadFinished()
         }
-        (mRootView.parent as ViewGroup)?.removeView(mRootView)
+
+        (mRootView?.parent as ViewGroup?)?.removeView(mRootView)
+
         return mRootView
     }
 
