@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.badmask_zly.zirumockdemo.viewmodel.RentFragmentVM" />
+            type="com.badmask_zly.zirumockdemo.viewmodel.RentHomeVM" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -17,16 +17,55 @@
 
         <ImageView
             android:id="@+id/fragment_rent_iv_header"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/default_big"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <!-- 按钮区域 -->
+        <LinearLayout
+            android:id="@+id/fragment_rent_ll_buttons"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_header">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/rent_renthouse" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/rent_owner" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fragment_rent_fl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_rent_ll_buttons">
+
+        </FrameLayout>
+
+
     </android.support.constraint.ConstraintLayout>
 
 

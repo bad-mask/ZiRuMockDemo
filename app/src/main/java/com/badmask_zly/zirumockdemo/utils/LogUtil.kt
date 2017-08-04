@@ -18,19 +18,19 @@ class LogUtil {
     companion object {
         var TAG = "ZiRu"
         val isDebug = true
-        fun d(msg: String, tag: String = TAG) {
+        fun d(msg: String, tag: String? = TAG) {
             if (isDebug) {
                 Log.d(tag, msg)
             }
         }
 
-        fun w(msg: String, tag: String = TAG) {
+        fun w(msg: String, tag: String? = TAG) {
             if (isDebug) {
                 Log.w(tag, msg)
             }
         }
 
-        fun e(msg: String, tag: String = TAG) {
+        fun e(msg: String, tag: String? = TAG) {
             if (isDebug) {
                 Log.e(tag, msg)
             }

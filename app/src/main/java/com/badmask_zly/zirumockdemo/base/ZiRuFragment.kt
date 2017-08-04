@@ -55,7 +55,7 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
     }
 
 
-    fun replaceFragmentByTag(@IdRes layoutId: Int, fragment: Fragment, tag: String, backStackName: String) {
+    fun replaceFragmentByTag(@IdRes layoutId: Int, fragment: Fragment, tag: String, backStackName: String? = null) {
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(layoutId, fragment, tag)
         if (!TextUtils.isEmpty(backStackName)) {
@@ -80,6 +80,7 @@ open abstract class ZiRuFragment<VM : ZiRuViewModel, VDB : ViewDataBinding> : Fr
 
             // 加载 layout
             val layoutId = loadLayoutId()
+
             //加载 ViewModel
             viewModel = loadViewModel()
             if (0 != layoutId && null != viewModel) {

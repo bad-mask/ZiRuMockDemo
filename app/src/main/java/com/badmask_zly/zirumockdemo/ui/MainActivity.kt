@@ -31,7 +31,7 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
                 switchTab()
             }
         })
-        viewModel.selectedTab.set(RENT)
+        viewModel.selectedTab.set(MINSU)
     }
 
     private fun switchTab() {
@@ -69,7 +69,6 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
 
 
     override fun loadViewModel(): HomeTabVm {
-        LogUtil.e("zly", "loadViewModel")
         return HomeTabVm()
     }
 

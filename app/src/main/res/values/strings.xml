@@ -4,4 +4,6 @@
     <string name="main_menu_ziruyu">自如寓</string>
     <string name="main_menu_minsu">民宿/驿站</string>
     <string name="main_menu_life">生活服务</string>
+    <string name="rent_owner">成为房东</string>
+    <string name="rent_renthouse">我要租房</string>
 </resources>

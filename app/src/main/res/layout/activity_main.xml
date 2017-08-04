@@ -29,7 +29,7 @@
         <View
             android:id="@+id/main_bottom_line"
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="1px"
             android:background="@color/base_divider_heavy"
             app:layout_constraintBottom_toTopOf="@+id/main_menu_layout"
             app:layout_constraintLeft_toLeftOf="parent"
