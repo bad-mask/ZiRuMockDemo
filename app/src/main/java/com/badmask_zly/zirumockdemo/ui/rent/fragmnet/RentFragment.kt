@@ -2,9 +2,7 @@ package com.badmask_zly.zirumockdemo.ui.rent.fragmnet
 
 import com.badmask_zly.zirumockdemo.R
 import com.badmask_zly.zirumockdemo.base.ZiRuFragment
-import com.badmask_zly.zirumockdemo.bean.ContentItem
 import com.badmask_zly.zirumockdemo.databinding.FragmentRentBinding
-import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerFragment
 import com.badmask_zly.zirumockdemo.viewmodel.RentHomeVM
 
 
@@ -24,7 +22,41 @@ class RentFragment : ZiRuFragment<RentHomeVM, FragmentRentBinding>() {
 
 
     override fun initialize() {
-        replaceFragmentByTag(R.id.fragment_rent_fl,ZiRuRecyclerFragment<ContentItem>().setViewModel(viewModel),"rent_list")
+
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 package com.badmask_zly.zirumockdemo.utils
 
 import android.content.Context
+import com.badmask_zly.zirumockdemo.base.BaseApplication
 import java.lang.ref.WeakReference
 
 /**
@@ -27,5 +28,12 @@ class ScreenUtil {
         fun getScreenWidth() = if (null != mContextRef) mContextRef.get()!!.resources.displayMetrics.widthPixels else 0
 
 
+        fun dp2Px(dp: Float) = dp * BaseApplication.instance.appContext.resources.displayMetrics.density
+
+        fun px2Dp(px: Float) = px / BaseApplication.instance.appContext.resources.displayMetrics.density
+
+        fun dip2Px(dip: Float) = (dp2Px(dip) + 0.5f).toInt()
+
+        fun px2DpCeilInt(px: Float) = (px2Dp(px) + 0.5f).toInt()
     }
 }

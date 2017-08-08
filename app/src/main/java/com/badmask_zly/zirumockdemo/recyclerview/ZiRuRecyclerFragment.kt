@@ -12,6 +12,7 @@ import java.lang.ref.WeakReference
  * Created by badmask_zly on 2017/8/2.
  *
  * recyclerView 的 Fragment
+ * 使用规范：此fragment 呈现的数据需要访问 fragment 页面对应的数据
  */
 class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerViewBinding>() {
 

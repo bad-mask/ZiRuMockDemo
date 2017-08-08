@@ -28,7 +28,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
     lateinit var beans: ObservableArrayList<T>
     var onItemClickListener: OnItemClickListener? = null
     lateinit var itemVMFactory: ItemVMFactory<T>
-    val callback: WeakReferenceOnListChangedCallback<T> = WeakReferenceOnListChangedCallback()
+    val callback: WeakReferenceOnListChangedCallback<T> = WeakReferenceOnListChangedCallback(this)
 
     /**
      * 如果一个类有主构造函数，每个次构造函数需要委托给主构造函数，可以直接委托或者通过别的次构造函数间接委托。委托到同一个类的另一个构造函数用 this 关键字即可。
@@ -42,7 +42,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
     override fun onBindViewHolder(holder: RecyclerSimpleViewHolder<T>, position: Int) {
         val itemVM: RecyclerItemVM<T> = holder.getItemVM()
         itemVM.setData(beans, beans[position], position)
-        holder.mBinding.setVariable(BR.viewModel, itemVM)
+        holder.mBinding.setVariable(BR.itemViewModel, itemVM)
         if (null != onItemClickListener) {
             holder.mBinding.root.isClickable = true
             holder.mBinding.root.setOnClickListener {
@@ -120,15 +120,15 @@ class ZiRuRecyclerSimpleAdapter<T>()
      * 「对象声明」不能在局部作用域（即，直接嵌套在函数内部），但是他们可以嵌套到其他对象声明或非内部类中
      * 伴生对象的成员看起来像其他语言的静态成员，在运行时他们仍然时真实对象的实例成员，如本类中的 weakReferenceOnListChangedCallback 对象
      */
-    class WeakReferenceOnListChangedCallback<T> : ObservableList.OnListChangedCallback<ObservableList<T>>() {
+    class WeakReferenceOnListChangedCallback<T>(ziRuRecyclerAdapter: ZiRuRecyclerSimpleAdapter<T>) : ObservableList.OnListChangedCallback<ObservableList<T>>() {
 
-        val adapterRef: WeakReference<ZiRuRecyclerSimpleAdapter<T>> = WeakReference<ZiRuRecyclerSimpleAdapter<T>>(ZiRuRecyclerSimpleAdapter())
+        val adapterRef: WeakReference<ZiRuRecyclerSimpleAdapter<T>> = WeakReference(ziRuRecyclerAdapter)
 
         /**
          * 列表中一段数据发生改变
          */
         override fun onItemRangeChanged(sender: ObservableList<T>?, positionStart: Int, itemCount: Int) {
-            val adapter: ZiRuRecyclerSimpleAdapter<T>? = adapterRef.get()
+            val adapter = adapterRef.get()
             adapter?.notifyItemRangeChanged(positionStart, itemCount)
         }
 
@@ -136,7 +136,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
          * 列表中移除一段数据
          */
         override fun onItemRangeRemoved(sender: ObservableList<T>?, positionStart: Int, itemCount: Int) {
-            val adapter: ZiRuRecyclerSimpleAdapter<T>? = adapterRef.get()
+            val adapter = adapterRef.get()
             adapter?.notifyItemRangeRemoved(positionStart, itemCount)
         }
 
@@ -144,7 +144,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
          * 数据改变
          */
         override fun onChanged(sender: ObservableList<T>) {
-            val adapter: ZiRuRecyclerSimpleAdapter<T>? = adapterRef.get()
+            val adapter = adapterRef.get()
             adapter?.notifyDataSetChanged()
         }
 
@@ -152,7 +152,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
          * 列表中移动一段数据
          */
         override fun onItemRangeMoved(sender: ObservableList<T>?, fromPosition: Int, toPosition: Int, itemCount: Int) {
-            val adapter: ZiRuRecyclerSimpleAdapter<T>? = adapterRef.get()
+            val adapter = adapterRef.get()
 
             for (i in 0..itemCount) {
                 adapter?.notifyItemMoved(fromPosition + i, toPosition + i)
@@ -163,7 +163,7 @@ class ZiRuRecyclerSimpleAdapter<T>()
          * 列表中插入一段数据
          */
         override fun onItemRangeInserted(sender: ObservableList<T>?, positionStart: Int, itemCount: Int) {
-            val adapter: ZiRuRecyclerSimpleAdapter<T>? = adapterRef.get()
+            val adapter = adapterRef.get()
             adapter?.notifyItemRangeInserted(positionStart, itemCount)
         }
 

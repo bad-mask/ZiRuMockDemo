@@ -54,7 +54,7 @@ abstract class FetchDataViewModel : ZiRuViewModel() {
         }
     }
 
-    fun loadData(resquestCode: Int, api: String, parameters: List<Pair<String, Any?>>? = null) {
+    fun loadData(requestCode: Int, api: String, parameters: List<Pair<String, Any?>>? = null) {
         if (resultCode.get() != CODE_SUCCESS) {
             resultCode.set(CODE_LOADING)
         } else {
@@ -62,7 +62,7 @@ abstract class FetchDataViewModel : ZiRuViewModel() {
         }
         LogUtil.e("loadData   api  =    " + api)
 
-        ApiService.instance().doGet(api, parameters, object : BusinessCallBack(resquestCode) {
+        ApiService.instance().doGet(api, parameters, object : BusinessCallBack(requestCode) {
             override fun onSuccess(result: Result<String, FuelError>) {
                 LogUtil.e("result     =    " + (result.getAs<String>() as String))
                 requestArray.remove(api)

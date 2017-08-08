@@ -1,11 +1,16 @@
 package com.badmask_zly.zirumockdemo.base
 
 import android.databinding.BindingAdapter
+import android.databinding.ObservableArrayList
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import com.badmask_zly.zirumockdemo.R
+import com.badmask_zly.zirumockdemo.recyclerview.ItemVMFactory
+import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerSimpleAdapter
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
@@ -47,6 +52,20 @@ fun setViewWidth(view: View, width: Int) {
     view.layoutParams.width = width
 }
 
+
+@BindingAdapter(value = *arrayOf("beans", "itemVMFactory", "itemClickListener", "layoutManager", "itemDecoration"), requireAll = false)
+fun <T> setUpRecyclerView(recyclerView: RecyclerView, beans: ObservableArrayList<T>?, itemVMFactory: ItemVMFactory<T>,
+                          itemClickListenter: OnItemClickListener?, layoutManager: RecyclerView.LayoutManager, itemDecoration: RecyclerView.ItemDecoration?) {
+
+    recyclerView.itemAnimator = null
+    recyclerView.layoutManager = layoutManager
+    if (null != itemDecoration) {
+        recyclerView.addItemDecoration(itemDecoration)
+    }
+    val simpleAdapter: ZiRuRecyclerSimpleAdapter<T> = ZiRuRecyclerSimpleAdapter(beans!!, itemVMFactory, itemClickListenter)
+    recyclerView.adapter = simpleAdapter
+
+}
 
 
 

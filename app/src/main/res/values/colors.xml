@@ -8,5 +8,9 @@
     <color name="main_gray">#B3999999</color>
     <!-- 重分隔 -->
     <color name="base_divider_heavy">#DDDDDD</color>
+    <color name="c_FF912F">#FF912F</color>
+    <color name="c_FAB256">#FAB256</color>
+    <color name="split">#E5E5E5</color>
+
 
 </resources>
