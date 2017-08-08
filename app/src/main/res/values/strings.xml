@@ -8,4 +8,6 @@
     <string name="rent_renthouse">我要租房</string>
     <string name="fragment_rent_contact_phone">电话咨询</string>
     <string name="fragment_rent_contact_online">在线委托</string>
+    <string name="fragment_rent_iv_header">RentFragment显示的第一张图片</string>
+    <string name="fragment_rent_iv_bottom">RentFragment显示的最后一张图片</string>
 </resources>

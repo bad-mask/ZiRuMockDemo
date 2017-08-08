@@ -22,7 +22,6 @@ class RentFragment : ZiRuFragment<RentHomeVM, FragmentRentBinding>() {
 
 
     override fun initialize() {
-
     }
 
 }

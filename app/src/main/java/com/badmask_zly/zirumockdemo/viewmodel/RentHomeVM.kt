@@ -3,6 +3,8 @@ package com.badmask_zly.zirumockdemo.viewmodel
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableField
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.LinearLayout
 import com.badmask_zly.zirumockdemo.base.BaseApplication
 import com.badmask_zly.zirumockdemo.base.FetchDataViewModel
 import com.badmask_zly.zirumockdemo.bean.ContentItem
@@ -23,13 +25,19 @@ class RentHomeVM : FetchDataViewModel() {
 
     val mScrollViewHeight = ScreenUtil.getScreenHeight() - ScreenUtil.dip2Px(100f)
     var recyclerviewData1: ObservableArrayList<ContentItem> = ObservableArrayList()
-    val itemVMFactory: MyItemVMFactory = MyItemVMFactory()
+    var recyclerviewData2: ObservableArrayList<ContentItem> = ObservableArrayList()
+    val itemVMFactory: MyItemVMFactoryOne = MyItemVMFactoryOne()
+    val itemVMFactory2: MyItemVMFactoryTwo = MyItemVMFactoryTwo()
     val layoutManager: GridLayoutManager = GridLayoutManager(BaseApplication.instance.appContext, 2)
+    val layoutManager2: LinearLayoutManager = LinearLayoutManager(BaseApplication.instance.appContext, LinearLayout.HORIZONTAL, false)
 
     var img: ObservableField<String> = ObservableField()
     var mTitleEntrust: ObservableField<String> = ObservableField()
     var mSubtitleEntrust: ObservableField<String> = ObservableField()
     val mHeaderImgHeight = ScreenUtil.getScreenHeight() * 1 / 3
+    var mTitleAbout: ObservableField<String> = ObservableField()
+    val mBottomImgWidth = ScreenUtil.getScreenWidth() * 1 / 3
+    val mBottomImgHeight = ScreenUtil.getScreenWidth() * 1 / 6
 
 
     init {
@@ -45,13 +53,18 @@ class RentHomeVM : FetchDataViewModel() {
             mTitleEntrust.set(rentHome.data.entrust.title)
             mSubtitleEntrust.set(rentHome.data.entrust.subtitle)
             recyclerviewData1.addAll(rentHome!!.data.introduce.content)
+            recyclerviewData2.addAll(rentHome!!.data.about_ziroom.content)
+            mTitleAbout.set(rentHome.data.about_ziroom.title)
 
         }
     }
 
     override fun loadApiService(): String = Api.Host + Api.getRentHomeDetail
 
-    class MyItemVMFactory : ItemVMFactory<ContentItem>() {
+    class MyItemVMFactoryOne : ItemVMFactory<ContentItem>() {
         override fun getItemVM(viewType: Int): RecyclerItemVM<ContentItem> = ItemContentRentOneVM()
+    }
+    class MyItemVMFactoryTwo : ItemVMFactory<ContentItem>() {
+        override fun getItemVM(viewType: Int): RecyclerItemVM<ContentItem> = ItemContentRentTwoVM()
     }
 }

@@ -23,39 +23,15 @@
                 android:id="@+id/fragment_rent_iv_header"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/fragment_rent_iv_header"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/default_big"
                 bind:imageUrl="@{viewModel.img}"
+                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_ll_buttons"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toTopOf="parent"
                 bind:resizeHeight="@{viewModel.mHeaderImgHeight}" />
-
-            <LinearLayout
-                android:id="@+id/fragment_rent_ll_buttons"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                bind:layout_constraintHorizontal_bias="0.0"
-                bind:layout_constraintLeft_toLeftOf="parent"
-                bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_header">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/rent_renthouse" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/rent_owner" />
-
-            </LinearLayout>
 
 
             <TextView
@@ -66,7 +42,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="0dp"
-                android:gravity="left"
+                android:gravity="start"
                 android:text="@{viewModel.MTitleEntrust}"
                 android:textColor="@color/main_black"
                 android:textSize="20sp"
@@ -80,10 +56,11 @@
                 android:id="@+id/textView5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:gravity="left"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
                 android:text="@{viewModel.MSubtitleEntrust}"
                 android:textColor="@color/main_gray"
                 android:textSize="12sp"
@@ -98,10 +75,10 @@
                 android:id="@+id/fragment_rent_ll_contact"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_rv_1"
                 bind:layout_constraintLeft_toLeftOf="parent"
@@ -112,7 +89,7 @@
                     android:id="@+id/fragment_rent_tv_contact_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_fragment_rent_contact_button_call"
                     android:gravity="center"
@@ -126,7 +103,7 @@
                     android:id="@+id/fragment_rent_tv_contact_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_fragment_rent_contact_button_online"
                     android:gravity="center"
@@ -171,8 +148,6 @@
                 style="@style/CommonSplitLine"
                 android:layout_width="0dp"
                 android:layout_height="1px"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_tv_about_ziroom"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
@@ -182,33 +157,127 @@
                 android:id="@+id/fragment_rent_tv_about_ziroom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
-                android:gravity="left"
-                android:text="@string/fragment_rent_contact_phone"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:text="@{viewModel.MTitleAbout}"
                 android:textColor="@color/main_black"
                 android:textSize="18sp"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_rv_2"
-                bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_1" />
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_view_line_2" />
 
             <!-- 关于自如下的横滑模式 -->
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/fragment_rent_rv_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:divider="@null"
-                bind:layout_constraintBottom_toBottomOf="@+id/fragment_rent_cl"
+                bind:beans="@{viewModel.recyclerviewData2}"
+                bind:itemVMFactory="@{viewModel.itemVMFactory2}"
+                bind:layoutManager="@{viewModel.layoutManager2}"
+                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_ll_contact_bottom"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_about_ziroom"
-                bind:layout_constraintVertical_bias="0.0">
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_about_ziroom">
 
             </android.support.v7.widget.RecyclerView>
+
+            <!-- 电话咨询／在线委托 底部区域 -->
+            <LinearLayout
+                android:id="@+id/fragment_rent_ll_contact_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_iv_bottom"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_2">
+
+                <TextView
+                    android:id="@+id/fragment_rent_tv_contact_bottom_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_fragment_rent_contact_button_bottom_contact"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="@string/fragment_rent_contact_phone"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/fragment_rent_tv_contact_bottom_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_fragment_rent_contact_button_bottom_contact"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="@string/fragment_rent_contact_online"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <!-- 最后一张图 -->
+            <ImageView
+                android:id="@+id/fragment_rent_iv_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/fragment_rent_iv_bottom"
+                android:src="@mipmap/homelogo"
+                bind:layout_constraintBottom_toBottomOf="@+id/fragment_rent_cl"
+                bind:layout_constraintHorizontal_bias="0.5"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_ll_contact_bottom"
+                bind:layout_constraintVertical_bias="0.5"
+                bind:resizeHeight="@{viewModel.MBottomImgHeight}"
+                bind:resizeWidth="@{viewModel.MBottomImgWidth}" />
+
+            <LinearLayout
+                android:id="@+id/fragment_rent_ll_buttons"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                bind:layout_constraintBottom_toTopOf="@+id/textView4"
+                bind:layout_constraintHorizontal_bias="0.0"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_header">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/rent_renthouse" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/rent_owner" />
+
+            </LinearLayout>
 
 
         </android.support.constraint.ConstraintLayout>
