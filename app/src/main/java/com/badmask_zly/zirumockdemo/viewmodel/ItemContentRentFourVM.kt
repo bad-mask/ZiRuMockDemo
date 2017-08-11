@@ -9,7 +9,7 @@ import com.badmask_zly.zirumockdemo.utils.ScreenUtil
  * Created by badmask_zly on 2017/8/1.
  * 自如「合租／整租」首页中，「自如业主俱乐部」模块对应的 item
  */
-class ItemContentRentVM : RecyclerItemVM<ContentItem>() {
+class ItemContentRentFourVM : RecyclerItemVM<ContentItem>() {
 
 //    主构造函数不能包含任何的代码。初始化的代码可以放到以 init 关键字作为前缀的初始化块「initializer blocks」中
 //    init { }
