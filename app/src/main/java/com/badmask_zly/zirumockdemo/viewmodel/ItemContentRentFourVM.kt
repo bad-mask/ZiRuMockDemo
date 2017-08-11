@@ -16,7 +16,7 @@ class ItemContentRentFourVM : RecyclerItemVM<ContentItem>() {
 
     override fun loadItemView(): Int = R.layout.item_rent_content
 
-    fun getImageHeight() = ScreenUtil.getScreenHeight() * 1 / 4
+    fun getImageHeight() = ScreenUtil.getScreenHeight() * 1 / 5
 
     fun getImageWidth() = ScreenUtil.getScreenWidth() * 1 / 2
 

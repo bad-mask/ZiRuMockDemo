@@ -158,9 +158,9 @@
                 android:id="@+id/fragment_rent_tv_about_ziroom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
                 android:gravity="start"
                 android:text="@{viewModel.MTitleAbout}"
@@ -197,8 +197,8 @@
                 style="@style/CommonSplitLine"
                 android:layout_width="0dp"
                 android:layout_height="1px"
-                android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_tv_audio"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
@@ -210,10 +210,9 @@
                 android:id="@+id/fragment_rent_tv_audio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="start"
                 android:text="@{viewModel.MTitleVedio}"
                 android:textColor="@color/main_black"
@@ -262,11 +261,28 @@
                 android:text="@{viewModel.MTitleProduct}"
                 android:textColor="@color/main_black"
                 android:textSize="18sp"
-                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_rv_3"
+                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_tv_sub_product"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_view_line_4" />
+
+            <TextView
+                android:id="@+id/fragment_rent_tv_sub_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="start"
+                android:text="@{viewModel.MSubtitleProduct}"
+                android:textSize="14sp"
+                bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_rv_3"
+                bind:layout_constraintHorizontal_bias="0.0"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_product" />
 
 
             <android.support.v7.widget.RecyclerView
@@ -284,7 +300,7 @@
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_product">
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_sub_product">
 
             </android.support.v7.widget.RecyclerView>
 
@@ -293,6 +309,8 @@
                 style="@style/CommonSplitLine"
                 android:layout_width="0dp"
                 android:layout_height="1px"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_tv_story"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
@@ -304,10 +322,7 @@
                 android:id="@+id/fragment_rent_tv_story"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
                 android:gravity="start"
                 android:text="@{viewModel.MTitleStory}"
                 android:textColor="@color/main_black"
