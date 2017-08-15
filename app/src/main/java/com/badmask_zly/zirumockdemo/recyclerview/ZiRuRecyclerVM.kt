@@ -33,7 +33,7 @@ abstract class ZiRuRecyclerVM<T> : FetchDataViewModel() {
         beans?.addAll(data)
     }
 
-    fun getItemViewType(position: Int) = 0
+    open fun getItemViewType(position: Int) = 0
 
     abstract fun getItemVM(viewType: Int): RecyclerItemVM<T>
 

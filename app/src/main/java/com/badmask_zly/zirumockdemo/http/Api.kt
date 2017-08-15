@@ -13,6 +13,11 @@ object Api {
     val getRentHomeDetail = "/online/combine/1ff1de774005f8da13f42943881c655f.json"
 
     /**
+     * 首页中的 自如寓
+     */
+    val getZiRuYuHomeDetail = "/online/combine/app/zry/v2/index.json?city_code=110000"
+
+    /**
      * 首页中的 生活服务
      */
     val getLifeHomeDetail = "/online/combine/8f14e45fceea167a5a36dedd4bea2543.json"

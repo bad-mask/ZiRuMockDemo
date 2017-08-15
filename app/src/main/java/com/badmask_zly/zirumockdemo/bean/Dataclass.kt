@@ -39,3 +39,50 @@ data class Story(val title: String, val content: List<ContentItem>)
  * 自如「合租／整租」首页中，通用数据模块
  */
 data class ContentItem(val img: String, val title: String, val description: String, val target: String, val app: String)
+
+
+/**
+ * 自如「民宿／驿站」首页中的数据
+ */
+data class MinSuHome(val status: String, val error_code: String, val error_message: String, val data: MinSuHomeData)
+
+data class MinSuHomeData(val syt: List<MinSuContentItem>, val mdd: List<MinSuContentItem>, val zry: List<MinSuContentItem>, val jchd: List<MinSuContentItem>, val hxzl: List<MinSuContentItem>, val fdgs: List<MinSuContentItem>, val ppg: List<MinSuContentItem>)
+
+data class Syt(val content: List<MinSuContentItem>)
+
+data class Mdd(val content: List<MinSuContentItem>)
+
+data class Zry(val content: List<MinSuContentItem>)
+
+data class Jchd(val content: List<MinSuContentItem>)
+
+data class Hxzl(val content: List<MinSuContentItem>)
+
+data class Fdgs(val content: List<MinSuContentItem>)
+
+data class Ppg(val content: List<MinSuContentItem>)
+
+/**
+ * 自如「民宿／驿站」首页中，通用数据模块
+ */
+data class MinSuContentItem(val title: String, val subtitle: String, val pic: String, val types: String, val rgb: String, val url: String, val activity_time: String)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

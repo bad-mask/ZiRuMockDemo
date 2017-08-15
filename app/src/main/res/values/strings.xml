@@ -6,8 +6,23 @@
     <string name="main_menu_life">生活服务</string>
     <string name="rent_owner">成为房东</string>
     <string name="rent_renthouse">我要租房</string>
+
     <string name="fragment_rent_contact_phone">电话咨询</string>
     <string name="fragment_rent_contact_online">在线委托</string>
     <string name="fragment_rent_iv_header">RentFragment显示的第一张图片</string>
     <string name="fragment_rent_iv_bottom">RentFragment显示的最后一张图片</string>
+
+    <string name="fragment_minsu_rgb1">自如民宿</string>
+    <string name="fragment_minsu_rgb2">全球精选民宿平台</string>
+    <string name="fragment_minsu_mdd1">热门目的地</string>
+    <string name="fragment_minsu_mdd2">| Popular Destinations</string>
+    <string name="fragment_minsu_zry1">自如驿</string>
+    <string name="fragment_minsu_zry2">| Ziroom Hostel</string>
+    <string name="fragment_minsu_zry3">更多</string>
+    <string name="fragment_minsu_hxzl1">焕心之旅</string>
+    <string name="fragment_minsu_hxzl2">| Explore the World</string>
+    <string name="fragment_minsu_fdgs1">旅行者和房东故事</string>
+    <string name="fragment_minsu_fdgs2">| Their Story</string>
+    <string name="fragment_minsu_ppg1">品牌馆</string>
+    <string name="fragment_minsu_ppg2">| Selected Brands</string>
 </resources>

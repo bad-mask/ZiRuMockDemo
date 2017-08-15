@@ -31,7 +31,7 @@ class MainActivity : ZiRuActivity<HomeTabVm, ActivityMainBinding>() {
                 switchTab()
             }
         })
-        viewModel.selectedTab.set(MINSU)
+        viewModel.selectedTab.set(LIFE)
     }
 
     private fun switchTab() {

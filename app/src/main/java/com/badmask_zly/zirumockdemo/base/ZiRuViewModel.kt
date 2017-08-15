@@ -40,7 +40,6 @@ open class ZiRuViewModel : BaseObservable() {
      */
     fun startActivity(intent: Intent, requestCode: Int) {
         if (null != mActivityActionListener) {
-            requestCode
             mActivityActionListener.startActivityForResult(intent, requestCode)
         }
     }

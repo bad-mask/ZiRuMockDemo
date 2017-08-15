@@ -21,15 +21,21 @@ import com.squareup.picasso.RequestCreator
 /**
  * 等到功能完成，尚需完善的地方是图片的缓存
  *
- * 在 xml 中设置 ImageView 的 url，其中 bind:error 设置图片加载失败后的默认图
+ * 在 xml 中设置 ImageView 的 url，其中 app:error 设置图片加载失败后的默认图
  */
 @BindingAdapter(value = *arrayOf("app:imageUrl", "app:placeHolder", "app:error", "app:round", "app:radius", "app:stroke_width", "app:stroke_color"), requireAll = false)
-fun loadImageWithPicasso(view: ImageView, url: String?, placeHolder: Drawable? = BaseApplication.instance.getDrawable(R.mipmap.default_big), error: Drawable?, round: Boolean?, radius: Int?, stroke_width: Int?, @ColorInt stroke_color: Int?) {
+fun loadImageWithPicasso(view: ImageView, url: String?, placeHolder: Drawable?, error: Drawable?, round: Boolean?, radius: Int?, stroke_width: Int?, @ColorInt stroke_color: Int?) {
     val picasso: Picasso = Picasso.with(view.context)
     val requestCreator: RequestCreator = picasso.load(url)
     //设置默认图
+    if (placeHolder == null) {
+        requestCreator.placeholder(BaseApplication.instance.getDrawable(R.mipmap.default_big))
+    }
     requestCreator.placeholder(placeHolder)
     //设置加载失败后的图
+    if (error == null) {
+        requestCreator.error(BaseApplication.instance.getDrawable(R.mipmap.default_big))
+    }
     if (null != error) {
         requestCreator.error(error)
     }

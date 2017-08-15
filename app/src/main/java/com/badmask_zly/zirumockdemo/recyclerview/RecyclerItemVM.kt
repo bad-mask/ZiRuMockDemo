@@ -18,6 +18,6 @@ open abstract class RecyclerItemVM<T> : ZiRuViewModel() {
 
     abstract fun loadItemView(): Int
 
-   open fun item() = bean
+    open fun item() = bean
 
 }

@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:id="@+id/fragment_rent_iv_header"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/fragment_rent_iv_header"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/default_big"
@@ -31,6 +31,7 @@
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="0dp"
                 bind:resizeHeight="@{viewModel.MHeaderImgHeight}" />
 
 
@@ -123,7 +124,7 @@
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_rv_1"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_ll_contact"></View>
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_ll_contact"/>
 
             <!-- 按钮区域 -->
             <android.support.v7.widget.RecyclerView
@@ -138,6 +139,7 @@
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_view_line_2"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
+                android:nestedScrollingEnabled="false"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_view_line_1"
                 bind:layout_constraintVertical_bias="0.0">
@@ -152,7 +154,7 @@
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_tv_about_ziroom"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_1"></View>
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_1"/>
 
             <TextView
                 android:id="@+id/fragment_rent_tv_about_ziroom"
@@ -186,6 +188,7 @@
                 bind:layoutManager="@{viewModel.layoutManager2}"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_view_line_3"
                 bind:layout_constraintHorizontal_bias="0.0"
+                android:nestedScrollingEnabled="false"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_tv_about_ziroom">
@@ -203,7 +206,7 @@
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_2"></View>
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_2"/>
 
             <!-- 视频部分 -->
             <TextView
@@ -248,7 +251,7 @@
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_audio"></View>
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_audio"/>
 
             <!-- 产品部分 -->
             <TextView
@@ -297,6 +300,7 @@
                 bind:itemVMFactory="@{viewModel.itemVMFactory3}"
                 bind:layoutManager="@{viewModel.layoutManager3}"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_view_line_5"
+                android:nestedScrollingEnabled="false"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
@@ -315,7 +319,7 @@
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
-                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_3"></View>
+                bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_rv_3"/>
 
             <!-- 业主部分 -->
             <TextView
@@ -346,6 +350,7 @@
                 bind:itemVMFactory="@{viewModel.itemVMFactory4}"
                 bind:layoutManager="@{viewModel.layoutManager4}"
                 bind:layout_constraintBottom_toTopOf="@+id/fragment_rent_ll_contact_bottom"
+                android:nestedScrollingEnabled="false"
                 bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
@@ -421,7 +426,6 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 bind:layout_constraintBottom_toTopOf="@+id/textView4"
-                bind:layout_constraintHorizontal_bias="0.0"
                 bind:layout_constraintLeft_toLeftOf="parent"
                 bind:layout_constraintRight_toRightOf="parent"
                 bind:layout_constraintTop_toBottomOf="@+id/fragment_rent_iv_header">
