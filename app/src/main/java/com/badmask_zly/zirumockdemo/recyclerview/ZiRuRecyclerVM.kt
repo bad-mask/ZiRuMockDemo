@@ -39,7 +39,7 @@ abstract class ZiRuRecyclerVM<T> : FetchDataViewModel() {
 
     fun getLayoutManager(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.LayoutManager = LinearLayoutManager(recyclerViewRef.get()!!.context)
 
-    fun getItemDecoration(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.ItemDecoration = DividerItemDecoration(recyclerViewRef.get()!!.context, DividerItemDecoration.VERTICAL_LIST)
+    open fun getItemDecoration(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.ItemDecoration? = DividerItemDecoration(recyclerViewRef.get()!!.context, DividerItemDecoration.VERTICAL_LIST)
 
 }
 

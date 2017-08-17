@@ -31,37 +31,37 @@ kapt {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile "org.jetbrains.anko:anko-common:$anko_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
+    implementation "org.jetbrains.anko:anko-common:$anko_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
-    kapt "com.android.databinding:compiler:2.3.0"
+    kapt "com.android.databinding:compiler:2.3.3"
 
     //kotlin http networking library
-//    compile 'com.github.kittinunf.fuel:fuel:<latest-version>' //for JVM
-    compile 'com.github.kittinunf.fuel:fuel-android:1.8.0' //for Android
-//    compile 'com.github.kittinunf.fuel:fuel-rxjava:<latest-version>' //for RxJava support
-//    compile 'com.github.kittinunf.fuel:fuel-livedata:<latest-version>' //for LiveData support
-//    compile 'com.github.kittinunf.fuel:fuel-gson:<latest-version>' //for Gson support
+//    implementation 'com.github.kittinunf.fuel:fuel:<latest-version>' //for JVM
+    implementation 'com.github.kittinunf.fuel:fuel-android:1.8.0' //for Android
+//    implementation 'com.github.kittinunf.fuel:fuel-rxjava:<latest-version>' //for RxJava support
+//    implementation 'com.github.kittinunf.fuel:fuel-livedata:<latest-version>' //for LiveData support
+//    implementation 'com.github.kittinunf.fuel:fuel-gson:<latest-version>' //for Gson support
 
 
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
 
     // OKHttp3(For Rexxar)
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
 
     // Gson for Kotlin
-    compile "com.github.salomonbrys.kotson:kotson:2.5.0"
+    implementation "com.github.salomonbrys.kotson:kotson:2.5.0"
 
     //Picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

@@ -7,7 +7,7 @@
         <!-- name 是固定的，type 为 viewModel 的全路径 -->
         <variable
             name="itemViewModel"
-            type="com.badmask_zly.zirumockdemo.viewmodel.ItemContentRentFourVM" />
+            type="com.badmask_zly.zirumockdemo.viewmodel.ItemContentRentSevenVMItem" />
     </data>
 
     <android.support.constraint.ConstraintLayout

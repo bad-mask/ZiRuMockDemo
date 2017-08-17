@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference
  * recyclerView 的 Fragment
  * 使用规范：此fragment 呈现的数据需要访问 fragment 页面对应的数据
  */
-class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerViewBinding>() {
+open class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerViewBinding>() {
 
     lateinit var adapter: ZiRuRecyclerAdapter<T>
     var cacheHeaderLayout: Int = 0
@@ -70,7 +70,7 @@ class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerViewBi
         // 设置 LayoutManager ，控制 item 的展示样式
         viewDataBinding.zrRecyclerView.layoutManager = manager
         // 设置 ItemDecoration (控制 item 的展示样式)
-        val decoration: RecyclerView.ItemDecoration = viewModel.getItemDecoration(WeakReference(viewDataBinding.zrRecyclerView))
+        val decoration: RecyclerView.ItemDecoration? = viewModel.getItemDecoration(WeakReference(viewDataBinding.zrRecyclerView))
         if (decoration != null) {
             viewDataBinding.zrRecyclerView.addItemDecoration(decoration)
         }

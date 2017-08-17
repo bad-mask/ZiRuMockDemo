@@ -19,24 +19,15 @@ package com.badmask_zly.zirumockdemo.bean
  */
 data class RentHome(val status: String, val error_code: String, val error_message: String, val data: RentHomeData)
 
-data class RentHomeData(val select_name: SelectName, val entrust: Entrust, val introduce: Introduce, val about_ziroom: AboutZiRoom, val video: Video, val ziroom_product: ZiRoomProduct, val story: Story)
-
-data class SelectName(val title: String, val content: List<ContentItem>)
-
-data class Entrust(val title: String, val subtitle: String)
-
-data class Introduce(val content: List<ContentItem>)
-
-data class AboutZiRoom(val title: String, val content: List<ContentItem>)
-
-data class Video(val title: String, val content: List<ContentItem>)
-
-data class ZiRoomProduct(val title: String, val subtitle: String, val content: List<ContentItem>)
-
-data class Story(val title: String, val content: List<ContentItem>)
+data class RentHomeData(val select_name: RentContentItem, val entrust: RentContentItem, val introduce: RentContentItem, val about_ziroom: RentContentItem, val video: RentContentItem, val ziroom_product: RentContentItem, val story: RentContentItem)
 
 /**
  * 自如「合租／整租」首页中，通用数据模块
+ */
+data class RentContentItem(val title: String, val subtitle: String, val content: List<ContentItem>)
+
+/**
+ * 自如「合租／整租」首页中，通用数据子模块
  */
 data class ContentItem(val img: String, val title: String, val description: String, val target: String, val app: String)
 
@@ -47,20 +38,6 @@ data class ContentItem(val img: String, val title: String, val description: Stri
 data class MinSuHome(val status: String, val error_code: String, val error_message: String, val data: MinSuHomeData)
 
 data class MinSuHomeData(val syt: List<MinSuContentItem>, val mdd: List<MinSuContentItem>, val zry: List<MinSuContentItem>, val jchd: List<MinSuContentItem>, val hxzl: List<MinSuContentItem>, val fdgs: List<MinSuContentItem>, val ppg: List<MinSuContentItem>)
-
-data class Syt(val content: List<MinSuContentItem>)
-
-data class Mdd(val content: List<MinSuContentItem>)
-
-data class Zry(val content: List<MinSuContentItem>)
-
-data class Jchd(val content: List<MinSuContentItem>)
-
-data class Hxzl(val content: List<MinSuContentItem>)
-
-data class Fdgs(val content: List<MinSuContentItem>)
-
-data class Ppg(val content: List<MinSuContentItem>)
 
 /**
  * 自如「民宿／驿站」首页中，通用数据模块

@@ -8,12 +8,13 @@ import com.badmask_zly.zirumockdemo.utils.ScreenUtil
 /**
  * Created by badmask_zly on 2017/8/17.
  */
-class ItemContentRentOneVM : RecyclerItemVM<RentContentItem>() {
+class ItemContentRentFiveVM : RecyclerItemVM<RentContentItem>() {
 
-    val mHeaderImgHeight = ScreenUtil.getScreenHeight() * 1 / 3
+    val mImgHeight = ScreenUtil.getScreenHeight() * 1 / 3
 
-    override fun loadItemView(): Int = R.layout.item_rent_content_one
+    override fun loadItemView(): Int = R.layout.item_rent_content_five
 
-    fun getImageUrl() = bean!!.content[0].img
+    override fun item(): RentContentItem? = bean
 
+    fun getImageUrl() = bean?.content!![0].img
 }

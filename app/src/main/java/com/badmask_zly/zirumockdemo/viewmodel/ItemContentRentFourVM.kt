@@ -1,29 +1,34 @@
 package com.badmask_zly.zirumockdemo.viewmodel
 
+import android.databinding.ObservableArrayList
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.LinearLayout
 import com.badmask_zly.zirumockdemo.R
+import com.badmask_zly.zirumockdemo.base.BaseApplication
 import com.badmask_zly.zirumockdemo.bean.ContentItem
+import com.badmask_zly.zirumockdemo.bean.RentContentItem
+import com.badmask_zly.zirumockdemo.recyclerview.ItemVMFactory
 import com.badmask_zly.zirumockdemo.recyclerview.RecyclerItemVM
-import com.badmask_zly.zirumockdemo.utils.ScreenUtil
 
 /**
- * Created by badmask_zly on 2017/8/1.
- * 自如「合租／整租」首页中，「自如业主俱乐部」模块对应的 item
+ * Created by badmask_zly on 2017/8/4.
  */
-class ItemContentRentFourVM : RecyclerItemVM<ContentItem>() {
+class ItemContentRentFourVM(mybeans: RentContentItem) : RecyclerItemVM<RentContentItem>() {
 
-//    主构造函数不能包含任何的代码。初始化的代码可以放到以 init 关键字作为前缀的初始化块「initializer blocks」中
-//    init { }
+    override fun loadItemView(): Int = R.layout.item_rent_content_four
 
-    override fun loadItemView(): Int = R.layout.item_rent_content
+    val layoutManager: LinearLayoutManager = LinearLayoutManager(BaseApplication.instance.appContext, LinearLayout.HORIZONTAL, false)
 
-    fun getImageHeight() = ScreenUtil.getScreenHeight() * 1 / 5
+    var recyclerviewData: ObservableArrayList<ContentItem> = ObservableArrayList()
+    val itemVMFactory: RentItemVMFactory = RentItemVMFactory()
 
-    fun getImageWidth() = ScreenUtil.getScreenWidth() * 1 / 2
+    init {
+        recyclerviewData.addAll(mybeans.content)//seem to be a bug , this code must be there
+    }
 
-    fun getTextWidth() = ScreenUtil.getScreenWidth() * 1 / 3
+    override fun item(): RentContentItem? = bean
 
-    fun getImageUrl() = bean?.img
-
-    fun getTitle() = bean?.title
-
+    class RentItemVMFactory : ItemVMFactory<ContentItem>() {
+        override fun getItemVM(viewType: Int): RecyclerItemVM<ContentItem> = ItemContentRentFourVMItem()
+    }
 }
