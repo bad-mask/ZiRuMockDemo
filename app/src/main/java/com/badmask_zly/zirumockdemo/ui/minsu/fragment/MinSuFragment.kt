@@ -2,7 +2,7 @@ package com.badmask_zly.zirumockdemo.ui.minsu.fragment
 
 import com.badmask_zly.zirumockdemo.R
 import com.badmask_zly.zirumockdemo.base.ZiRuFragment
-import com.badmask_zly.zirumockdemo.bean.MinSuContentItem
+import com.badmask_zly.zirumockdemo.bean.MinSuAndLifeContentItem
 import com.badmask_zly.zirumockdemo.databinding.FragmentMinsuBinding
 import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerFragment
 import com.badmask_zly.zirumockdemo.viewmodel.MinsuFragmentVM2
@@ -19,5 +19,5 @@ class MinSuFragment : ZiRuFragment<MinsuFragmentVM2, FragmentMinsuBinding>() {
         return R.layout.fragment_minsu
     }
 
-    override fun initialize() = replaceFragmentByTag(R.id.fragment_minsu_recycler, ZiRuRecyclerFragment<List<MinSuContentItem>?>().setViewModel(viewModel), "minsu_fragment")
+    override fun initialize() = replaceFragmentByTag(R.id.fragment_minsu_recycler, ZiRuRecyclerFragment<List<MinSuAndLifeContentItem>?>().setViewModel(viewModel), "minsu_fragment")
 }

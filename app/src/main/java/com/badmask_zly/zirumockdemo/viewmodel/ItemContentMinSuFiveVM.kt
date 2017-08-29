@@ -5,17 +5,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import com.badmask_zly.zirumockdemo.R
 import com.badmask_zly.zirumockdemo.base.BaseApplication
-import com.badmask_zly.zirumockdemo.bean.MinSuContentItem
+import com.badmask_zly.zirumockdemo.bean.MinSuAndLifeContentItem
 import com.badmask_zly.zirumockdemo.recyclerview.ItemVMFactory
 import com.badmask_zly.zirumockdemo.recyclerview.RecyclerItemVM
 
 /**
  * Created by badmask_zly on 2017/8/15.
  */
-class ItemContentMinSuFiveVM(mybeans: List<MinSuContentItem>) : RecyclerItemVM<List<MinSuContentItem>?>() {
+class ItemContentMinSuFiveVM(mybeans: List<MinSuAndLifeContentItem>) : RecyclerItemVM<List<MinSuAndLifeContentItem>?>() {
 
     val layoutManager: LinearLayoutManager = LinearLayoutManager(BaseApplication.instance.appContext, LinearLayout.HORIZONTAL, false)
-    var recyclerviewData: ObservableArrayList<MinSuContentItem> = ObservableArrayList()
+    var recyclerviewData: ObservableArrayList<MinSuAndLifeContentItem> = ObservableArrayList()
     val itemVMFactory: MinSuItemVMFactory = MinSuItemVMFactory()
 
     init {
@@ -24,8 +24,8 @@ class ItemContentMinSuFiveVM(mybeans: List<MinSuContentItem>) : RecyclerItemVM<L
 
     override fun loadItemView(): Int = R.layout.item_minsu_content_five
 
-    class MinSuItemVMFactory : ItemVMFactory<MinSuContentItem>() {
-        override fun getItemVM(viewType: Int): RecyclerItemVM<MinSuContentItem> = ItemContentMinSuFiveVMItem()
+    class MinSuItemVMFactory : ItemVMFactory<MinSuAndLifeContentItem>() {
+        override fun getItemVM(viewType: Int): RecyclerItemVM<MinSuAndLifeContentItem> = ItemContentMinSuFiveVMItem()
     }
 
 }

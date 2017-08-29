@@ -37,12 +37,12 @@ data class ContentItem(val img: String, val title: String, val description: Stri
  */
 data class MinSuHome(val status: String, val error_code: String, val error_message: String, val data: MinSuHomeData)
 
-data class MinSuHomeData(val syt: List<MinSuContentItem>, val mdd: List<MinSuContentItem>, val zry: List<MinSuContentItem>, val jchd: List<MinSuContentItem>, val hxzl: List<MinSuContentItem>, val fdgs: List<MinSuContentItem>, val ppg: List<MinSuContentItem>)
+data class MinSuHomeData(val syt: List<MinSuAndLifeContentItem>, val mdd: List<MinSuAndLifeContentItem>, val zry: List<MinSuAndLifeContentItem>, val jchd: List<MinSuAndLifeContentItem>, val hxzl: List<MinSuAndLifeContentItem>, val fdgs: List<MinSuAndLifeContentItem>, val ppg: List<MinSuAndLifeContentItem>)
 
 /**
  * 自如「民宿／驿站」首页中，通用数据模块
  */
-data class MinSuContentItem(val title: String, val subtitle: String, val pic: String, val types: String, val rgb: String, val url: String, val activity_time: String)
+data class MinSuAndLifeContentItem(val title: String, val subtitle: String, val pic: String, val types: String, val rgb: String, val url: String, val activity_time: String)
 
 
 

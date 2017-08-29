@@ -1,6 +1,6 @@
 package com.badmask_zly.zirumockdemo.viewmodel
 
-import com.badmask_zly.zirumockdemo.bean.MinSuContentItem
+import com.badmask_zly.zirumockdemo.bean.MinSuAndLifeContentItem
 import com.badmask_zly.zirumockdemo.bean.MinSuHome
 import com.badmask_zly.zirumockdemo.http.Api
 import com.badmask_zly.zirumockdemo.recyclerview.RecyclerItemVM
@@ -10,7 +10,7 @@ import com.google.gson.Gson
 /**
  * Created by badmask_zly on 2017/7/20.
  */
-class MinsuFragmentVM2 : ZiRuRecyclerVM<List<MinSuContentItem>?>() {
+class MinsuFragmentVM2 : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
 
     companion object {
         val TYPE_ONE = 1
@@ -22,7 +22,7 @@ class MinsuFragmentVM2 : ZiRuRecyclerVM<List<MinSuContentItem>?>() {
         val TYPE_SEVEN = 7
     }
 
-    override fun getItemVM(viewType: Int): RecyclerItemVM<List<MinSuContentItem>?> = when (viewType) {
+    override fun getItemVM(viewType: Int): RecyclerItemVM<List<MinSuAndLifeContentItem>?> = when (viewType) {
         TYPE_ONE -> ItemContentMinSuOneVM()
         TYPE_TWO -> ItemContentMinSuTwoVM(beans?.get(1)!!)
         TYPE_THREE -> ItemContentMinSuThreeVM(beans?.get(2)!!)
@@ -54,7 +54,7 @@ class MinsuFragmentVM2 : ZiRuRecyclerVM<List<MinSuContentItem>?>() {
 
         val gson: Gson = Gson()
         val minsuHome: MinSuHome = gson.fromJson(result, MinSuHome::class.java)
-        val minsuHomeList: ArrayList<List<MinSuContentItem>?> = arrayListOf(minsuHome.data.syt, minsuHome.data.mdd, minsuHome.data.zry, minsuHome.data.jchd, minsuHome.data.hxzl, minsuHome.data.fdgs, minsuHome.data.ppg)
+        val minsuHomeList: ArrayList<List<MinSuAndLifeContentItem>?> = arrayListOf(minsuHome.data.syt, minsuHome.data.mdd, minsuHome.data.zry, minsuHome.data.jchd, minsuHome.data.hxzl, minsuHome.data.fdgs, minsuHome.data.ppg)
         addAll(minsuHomeList)
     }
 
