@@ -1,11 +1,13 @@
 package com.badmask_zly.zirumockdemo.viewmodel
 
+import android.support.v7.widget.RecyclerView
 import com.badmask_zly.zirumockdemo.bean.LifeHome
 import com.badmask_zly.zirumockdemo.bean.MinSuAndLifeContentItem
 import com.badmask_zly.zirumockdemo.http.Api
 import com.badmask_zly.zirumockdemo.recyclerview.RecyclerItemVM
 import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerVM
 import com.google.gson.Gson
+import java.lang.ref.WeakReference
 
 /**
  * Created by badmask_zly on 2017/7/20.
@@ -33,7 +35,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         1 -> TYPE_TWO
         2 -> TYPE_THREE
         3 -> TYPE_FOUR
-        else -> TYPE_FOUR
+        else -> TYPE_ONE
     }
 
 
@@ -41,14 +43,14 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         TYPE_ONE -> ItemContentLifeOneVM(beans?.get(0)!!)
         TYPE_TWO -> ItemContentLifeTwoVM(beans?.get(1)!!)
         TYPE_THREE -> ItemContentLifeThreeVM(beans?.get(2)!!)
-
-//        RentFragmentVM2.TYPE_TWO -> ItemContentRentTwoVM()
-//        RentFragmentVM2.TYPE_THREE -> ItemContentRentThreeVM(beans?.get(2)!!.content)
-//        RentFragmentVM2.TYPE_FOUR -> ItemContentRentFourVM(beans?.get(3)!!)
+        TYPE_FOUR -> ItemContentLifeFourVM(beans?.get(3)!!)
         else -> ItemContentLifeOneVM(beans?.get(0)!!)
     }
 
     override fun loadApiService(): String = Api.Host + Api.getLifeHomeDetail
+
+    override fun getItemDecoration(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.ItemDecoration? = null
+
 }
 
 
