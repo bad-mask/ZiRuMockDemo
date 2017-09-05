@@ -26,4 +26,8 @@
     <string name="fragment_minsu_fdgs2">| Their Story</string>
     <string name="fragment_minsu_ppg1">品牌馆</string>
     <string name="fragment_minsu_ppg2">| Selected Brands</string>
+
+    <string name="fragment_life_upin1">自如优品</string>
+    <string name="fragment_life_upin2">| 品质家居服务，找到生活的归属</string>
+
 </resources>

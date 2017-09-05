@@ -5,7 +5,7 @@ package com.badmask_zly.zirumockdemo.http
  */
 object Api {
 
-    val Host = "https://contentful.ziroom.com"
+    val Host = "http://contentful.ziroom.com"
 
     /**
      * 首页中的 合租／整租

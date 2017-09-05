@@ -1,10 +1,10 @@
 package com.badmask_zly.zirumockdemo.base
 
+import android.content.Context
 import android.databinding.BindingAdapter
 import android.databinding.ObservableArrayList
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
@@ -13,6 +13,8 @@ import com.badmask_zly.zirumockdemo.recyclerview.ItemVMFactory
 import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerSimpleAdapter
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
+import com.youth.banner.Banner
+import com.youth.banner.loader.ImageLoader
 
 /**
  * Created by badmask_zly on 2017/8/3.
@@ -70,6 +72,20 @@ fun <T> setUpRecyclerView(recyclerView: RecyclerView, beans: ObservableArrayList
     }
     val simpleAdapter: ZiRuRecyclerSimpleAdapter<T> = ZiRuRecyclerSimpleAdapter(beans!!, itemVMFactory, itemClickListenter)
     recyclerView.adapter = simpleAdapter
+
+}
+
+@BindingAdapter(value = *arrayOf( "bannerImages"), requireAll = false)
+fun setUpBannerView(banner: Banner, images: List<String>) {
+    banner.setImages(images)
+    banner.setImageLoader(picassoImageLoader)
+    banner.start()
+}
+
+object picassoImageLoader : ImageLoader() {
+    override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
+        Picasso.with(context).load(path as String).into(imageView)
+    }
 
 }
 

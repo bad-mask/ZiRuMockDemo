@@ -31,6 +31,7 @@ data class RentContentItem(val title: String, val subtitle: String, val content:
  */
 data class ContentItem(val img: String, val title: String, val description: String, val target: String, val app: String)
 
+//==========================================================
 
 /**
  * 自如「民宿／驿站」首页中的数据
@@ -38,6 +39,17 @@ data class ContentItem(val img: String, val title: String, val description: Stri
 data class MinSuHome(val status: String, val error_code: String, val error_message: String, val data: MinSuHomeData)
 
 data class MinSuHomeData(val syt: List<MinSuAndLifeContentItem>, val mdd: List<MinSuAndLifeContentItem>, val zry: List<MinSuAndLifeContentItem>, val jchd: List<MinSuAndLifeContentItem>, val hxzl: List<MinSuAndLifeContentItem>, val fdgs: List<MinSuAndLifeContentItem>, val ppg: List<MinSuAndLifeContentItem>)
+
+
+//==========================================================
+
+
+/**
+ * 自如「生活服务」首页中的数据
+ */
+data class LifeHome(val status: String, val error_code: String, val error_message: String, val data: LifeHomeData)
+
+data class LifeHomeData(val upinEntrance: List<MinSuAndLifeContentItem>, val lunboBanner: List<MinSuAndLifeContentItem>, val hotRecommend: List<MinSuAndLifeContentItem>, val severStory: List<MinSuAndLifeContentItem>)
 
 /**
  * 自如「民宿／驿站」首页中，通用数据模块

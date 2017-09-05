@@ -2,7 +2,9 @@ package com.badmask_zly.zirumockdemo.ui.life.fragment
 
 import com.badmask_zly.zirumockdemo.R
 import com.badmask_zly.zirumockdemo.base.ZiRuFragment
+import com.badmask_zly.zirumockdemo.bean.MinSuAndLifeContentItem
 import com.badmask_zly.zirumockdemo.databinding.FragmentLifeBinding
+import com.badmask_zly.zirumockdemo.recyclerview.ZiRuRecyclerFragment
 import com.badmask_zly.zirumockdemo.viewmodel.LifeFragmentVM
 
 /**
@@ -17,7 +19,7 @@ class LifeFramgent : ZiRuFragment<LifeFragmentVM, FragmentLifeBinding>() {
         return R.layout.fragment_life
     }
 
-    override fun initialize() {
-        // TODO
-    }
+    override fun initialize() = replaceFragmentByTag(R.id.fragment_life_recycler, ZiRuRecyclerFragment<List<MinSuAndLifeContentItem>?>().setViewModel(viewModel), "life_fragment")
+
+
 }

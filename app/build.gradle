@@ -64,4 +64,7 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //BannerView
+    implementation 'com.youth.banner:banner:1.4.9'
 }
