@@ -22,7 +22,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
 
     override fun handleData(result: String, status: Boolean) {
         super.handleData(result, status)
-        val gson: Gson = Gson()
+        val gson = Gson()
         val lifeHome: LifeHome = gson.fromJson(result, LifeHome::class.java)
         val lifeHomeList = arrayListOf<List<MinSuAndLifeContentItem>>(lifeHome.data.upinEntrance, lifeHome.data.lunboBanner, lifeHome.data.hotRecommend, lifeHome.data.severStory)
         addAll(lifeHomeList)
@@ -40,6 +40,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
     override fun getItemVM(viewType: Int): RecyclerItemVM<List<MinSuAndLifeContentItem>?> = when (viewType) {
         TYPE_ONE -> ItemContentLifeOneVM(beans?.get(0)!!)
         TYPE_TWO -> ItemContentLifeTwoVM(beans?.get(1)!!)
+        TYPE_THREE -> ItemContentLifeThreeVM(beans?.get(2)!!)
 
 //        RentFragmentVM2.TYPE_TWO -> ItemContentRentTwoVM()
 //        RentFragmentVM2.TYPE_THREE -> ItemContentRentThreeVM(beans?.get(2)!!.content)

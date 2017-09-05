@@ -29,5 +29,7 @@
 
     <string name="fragment_life_upin1">自如优品</string>
     <string name="fragment_life_upin2">| 品质家居服务，找到生活的归属</string>
+    <string name="fragment_life_hot1">热门推荐</string>
+    <string name="fragment_life_hot2">| 体验优质服务，享受美好生活</string>
 
 </resources>
