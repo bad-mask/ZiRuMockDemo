@@ -75,7 +75,7 @@ fun <T> setUpRecyclerView(recyclerView: RecyclerView, beans: ObservableArrayList
 
 }
 
-@BindingAdapter(value = *arrayOf( "bannerImages"), requireAll = false)
+@BindingAdapter(value = *arrayOf( "app:bannerImages"), requireAll = false)
 fun setUpBannerView(banner: Banner, images: List<String>) {
     banner.setImages(images)
     banner.setImageLoader(picassoImageLoader)
@@ -86,7 +86,6 @@ object picassoImageLoader : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
         Picasso.with(context).load(path as String).into(imageView)
     }
-
 }
 
 

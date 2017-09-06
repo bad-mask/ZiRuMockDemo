@@ -47,6 +47,8 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         else -> ItemContentLifeOneVM(beans?.get(0)!!)
     }
 
+    override fun enablePullToRefresh(): Boolean = false
+
     override fun loadApiService(): String = Api.Host + Api.getLifeHomeDetail
 
     override fun getItemDecoration(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.ItemDecoration? = null

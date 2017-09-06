@@ -37,6 +37,11 @@ abstract class ZiRuRecyclerVM<T> : FetchDataViewModel() {
 
     abstract fun getItemVM(viewType: Int): RecyclerItemVM<T>
 
+    /**
+     * 是否启用下拉刷新，默认启用
+     */
+    open fun enablePullToRefresh() = true
+
     fun getLayoutManager(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.LayoutManager = LinearLayoutManager(recyclerViewRef.get()!!.context)
 
     open fun getItemDecoration(recyclerViewRef: WeakReference<RecyclerView>): RecyclerView.ItemDecoration? = DividerItemDecoration(recyclerViewRef.get()!!.context, DividerItemDecoration.VERTICAL_LIST)

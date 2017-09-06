@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.badmask_zly.zirumockdemo.BR
-import com.badmask_zly.zirumockdemo.base.OnItemClickListener
 import java.lang.ref.WeakReference
 
 /**
@@ -21,18 +20,23 @@ class ZiRuRecyclerAdapter<T>()
 
     val TAG: String = "ZiRuRecyclerSimpleAdapter"
 
-    val VIEW_HEADER: Int = 1001
+    //headerView
+    private val VIEW_HEADER = 1001
     //footerView
-    val VIEW_FOOTER = 1002
+    private val VIEW_FOOTER = 1002
+    //loadMoreView
+    private val VIEW_LOAD_MORE = 1003
 
     lateinit var viewModel: ZiRuRecyclerVM<T>
     lateinit var mContext: Context
     lateinit var recyclerView: RecyclerView
     var headerViewRes: Int = 0
     var footerViewRes: Int = 0
+    var loadMoreViewRes: Int = 0
     //防止列表数据还未填充时就被展示出来
     var showHeaderView: Boolean = false
     var showFooterView: Boolean = false
+    var showLoadingMoreView: Boolean = false
 
     var mInLoading: Boolean = false
 
@@ -41,7 +45,11 @@ class ZiRuRecyclerAdapter<T>()
     //FooterLayout 的 ViewDataBinding
     lateinit var footerBinding: ViewDataBinding
 
-    var onItemClickListener: OnItemClickListener? = null
+    //header 个数，目前只支持单 header 模式
+    private var headerCount = 0
+    //footer 个数，目前只支持单 footer 模式
+    private var footerCount = 0
+
     val callback: WeakReferenceOnListChangedCallback<T> = WeakReferenceOnListChangedCallback(this)
 
     /**
@@ -60,6 +68,7 @@ class ZiRuRecyclerAdapter<T>()
     fun setHeaderViewResForRecyclerView(@LayoutRes layoutId: Int) {
         if (layoutId != 0) {
             headerViewRes = layoutId
+            headerCount = 1
             showHeaderView = true
             headerBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), headerViewRes, null, false)
             viewModel.headerView = headerBinding.root
@@ -72,6 +81,7 @@ class ZiRuRecyclerAdapter<T>()
     fun setFooterViewResForRecyclerView(@LayoutRes layoutId: Int) {
         if (layoutId != 0) {
             footerViewRes = layoutId
+            footerCount = 1
             showFooterView = true
             footerBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), footerViewRes, null, false)
             viewModel.footerView = footerBinding.root
@@ -87,15 +97,16 @@ class ZiRuRecyclerAdapter<T>()
 
     override fun onBindViewHolder(holder: RecyclerViewHolder<T>, position: Int) {
         val viewType: Int = getItemViewType(position)
-        if (viewType != VIEW_HEADER && viewType != VIEW_FOOTER) {
+        if (viewType != VIEW_HEADER && viewType != VIEW_FOOTER && viewType != VIEW_LOAD_MORE) {
             // 正常 item 的逻辑处理单独提出一个viewModel
             val itemVM: RecyclerItemVM<T> = holder.getItemVM()
-            itemVM.setData(viewModel.beans, viewModel.beans!![position], position )
+            itemVM.setData(viewModel.beans, viewModel.beans!![position], position)
             holder.mBinding.setVariable(BR.itemViewModel, itemVM)
             //为正常 item 增加点击监听
             holder.mBinding.root.isClickable = true
             holder.mBinding.root.setOnClickListener { viewModel.onItemClick(WeakReference(it), viewModel.beans!![position], position) }
         } else {
+            //header、footer、loadMore 的 view 处理都在外层 viewModel 中处理
             holder.mBinding.setVariable(BR.viewModel, viewModel)
         }
         holder.mBinding.executePendingBindings()
@@ -127,9 +138,31 @@ class ZiRuRecyclerAdapter<T>()
         return holder
     }
 
-    override fun getItemCount(): Int = if (null == viewModel.beans) 0 else (viewModel.beans!!).size
+    override fun getItemCount(): Int {
+        var itemCount = if (null == viewModel.beans) 0 else (viewModel.beans!!).size
+        if (0 != headerViewRes && showHeaderView) itemCount++
+        if (0 != footerViewRes && showFooterView) itemCount++
+        if (0 != loadMoreViewRes && showLoadingMoreView) itemCount++
+        return itemCount
+    }
 
     override fun getItemViewType(position: Int): Int {
+
+        if (0 == position && 0 != headerViewRes) {
+            //headerView
+            return VIEW_HEADER
+        }
+
+        if (position == (viewModel.beans?.size ?: 0) + headerCount && 0 != footerViewRes) {
+            //footerView
+            return VIEW_FOOTER
+        }
+
+        if (position == (viewModel.beans?.size ?: 0) + headerCount + footerCount && 0 != loadMoreViewRes) {
+            //loadMoreView
+            return VIEW_LOAD_MORE
+        }
+
         return viewModel.getItemViewType(position)
     }
 

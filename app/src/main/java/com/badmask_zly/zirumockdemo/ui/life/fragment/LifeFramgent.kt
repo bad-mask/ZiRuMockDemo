@@ -11,15 +11,24 @@ import com.badmask_zly.zirumockdemo.viewmodel.LifeFragmentVM
  * Created by badmask_zly on 2017/7/13.
  */
 class LifeFramgent : ZiRuFragment<LifeFragmentVM, FragmentLifeBinding>() {
-    override fun loadViewModel(): LifeFragmentVM {
-        return LifeFragmentVM()
-    }
+
+    lateinit var mLifeFragmentVM: LifeFragmentVM
+
+    lateinit var mZiRuRecyclerFragment: ZiRuRecyclerFragment<List<MinSuAndLifeContentItem>?>
+
+    override fun loadViewModel(): LifeFragmentVM = mLifeFragmentVM
 
     override fun loadLayoutId(): Int {
+        mLifeFragmentVM = LifeFragmentVM()
         return R.layout.fragment_life
     }
 
-    override fun initialize() = replaceFragmentByTag(R.id.fragment_life_recycler, ZiRuRecyclerFragment<List<MinSuAndLifeContentItem>?>().setViewModel(viewModel), "life_fragment")
+    override fun initialize() {
 
+        mZiRuRecyclerFragment = ZiRuRecyclerFragment()
+//        mLifeFragmentVM.headerLayout.set(R.layout.header)
+        replaceFragmentByTag(R.id.fragment_life_recycler, mZiRuRecyclerFragment.setViewModel(viewModel), "life_fragment")
+
+    }
 
 }

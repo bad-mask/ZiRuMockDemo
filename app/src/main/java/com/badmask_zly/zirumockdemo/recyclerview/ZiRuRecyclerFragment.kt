@@ -63,7 +63,7 @@ open class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerV
             adapter?.setHeaderViewResForRecyclerView(cacheHeaderLayout)
         }
         if (0 != cacheFooterLayout) {
-            adapter?.setFooterViewResForRecyclerView(cacheHeaderLayout)
+            adapter?.setFooterViewResForRecyclerView(cacheFooterLayout)
         }
 
         val manager: RecyclerView.LayoutManager = viewModel.getLayoutManager(WeakReference<RecyclerView>(viewDataBinding.zrRecyclerView))
@@ -81,6 +81,7 @@ open class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerV
         viewDataBinding.zrRecyclerSwipeRefresh.setOnRefreshListener {
             viewDataBinding.zrRecyclerSwipeRefresh.isRefreshing = true
         }
+        viewDataBinding.zrRecyclerSwipeRefresh.isEnabled = viewModel.enablePullToRefresh()
         //获取数据
         viewModel.fetchData()
         viewDataBinding.zrRecyclerView.adapter = adapter
