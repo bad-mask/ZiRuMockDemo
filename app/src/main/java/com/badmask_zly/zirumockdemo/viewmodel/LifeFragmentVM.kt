@@ -26,7 +26,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         super.handleData(result, status)
         val gson = Gson()
         val lifeHome: LifeHome = gson.fromJson(result, LifeHome::class.java)
-        val lifeHomeList = arrayListOf<List<MinSuAndLifeContentItem>>(lifeHome.data.upinEntrance, lifeHome.data.lunboBanner, lifeHome.data.hotRecommend, lifeHome.data.severStory)
+        val lifeHomeList = arrayListOf(lifeHome.data.upinEntrance, lifeHome.data.lunboBanner, lifeHome.data.hotRecommend, lifeHome.data.severStory)
         addAll(lifeHomeList)
     }
 
@@ -35,7 +35,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         1 -> TYPE_TWO
         2 -> TYPE_THREE
         3 -> TYPE_FOUR
-        else -> TYPE_ONE
+        else -> TYPE_FOUR
     }
 
 
@@ -44,7 +44,7 @@ class LifeFragmentVM : ZiRuRecyclerVM<List<MinSuAndLifeContentItem>?>() {
         TYPE_TWO -> ItemContentLifeTwoVM(beans?.get(1)!!)
         TYPE_THREE -> ItemContentLifeThreeVM(beans?.get(2)!!)
         TYPE_FOUR -> ItemContentLifeFourVM(beans?.get(3)!!)
-        else -> ItemContentLifeOneVM(beans?.get(0)!!)
+        else -> ItemContentLifeFourVM(beans?.get(3)!!)
     }
 
     override fun enablePullToRefresh(): Boolean = false

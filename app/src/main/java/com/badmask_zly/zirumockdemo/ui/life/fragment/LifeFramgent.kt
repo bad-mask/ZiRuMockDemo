@@ -26,7 +26,6 @@ class LifeFramgent : ZiRuFragment<LifeFragmentVM, FragmentLifeBinding>() {
     override fun initialize() {
 
         mZiRuRecyclerFragment = ZiRuRecyclerFragment()
-//        mLifeFragmentVM.headerLayout.set(R.layout.header)
         replaceFragmentByTag(R.id.fragment_life_recycler, mZiRuRecyclerFragment.setViewModel(viewModel), "life_fragment")
 
     }

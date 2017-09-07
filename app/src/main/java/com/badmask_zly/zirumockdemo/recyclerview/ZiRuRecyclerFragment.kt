@@ -42,12 +42,12 @@ open class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerV
 
         viewModel.headerLayout.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(p0: Observable?, p1: Int) {
-                if (null != adapter) adapter?.setHeaderViewResForRecyclerView(viewModel.headerLayout.get()) else cacheHeaderLayout = viewModel.headerLayout.get()
+                if (null != adapter) adapter.setHeaderViewResForRecyclerView(viewModel.headerLayout.get()) else cacheHeaderLayout = viewModel.headerLayout.get()
             }
         })
         viewModel.footerLayout.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(p0: Observable?, p1: Int) {
-                if (null != adapter) adapter?.setFooterViewResForRecyclerView(viewModel.footerLayout.get()) else cacheFooterLayout = viewModel.footerLayout.get()
+                if (null != adapter) adapter.setFooterViewResForRecyclerView(viewModel.footerLayout.get()) else cacheFooterLayout = viewModel.footerLayout.get()
             }
         })
         return this
@@ -60,10 +60,10 @@ open class ZiRuRecyclerFragment<T> : ZiRuFragment<ZiRuRecyclerVM<T>, ZrRecyclerV
     override fun initialize() {
         adapter = ZiRuRecyclerAdapter(activity, viewModel, viewDataBinding.zrRecyclerView)
         if (0 != cacheHeaderLayout) {
-            adapter?.setHeaderViewResForRecyclerView(cacheHeaderLayout)
+            adapter.setHeaderViewResForRecyclerView(cacheHeaderLayout)
         }
         if (0 != cacheFooterLayout) {
-            adapter?.setFooterViewResForRecyclerView(cacheFooterLayout)
+            adapter.setFooterViewResForRecyclerView(cacheFooterLayout)
         }
 
         val manager: RecyclerView.LayoutManager = viewModel.getLayoutManager(WeakReference<RecyclerView>(viewDataBinding.zrRecyclerView))

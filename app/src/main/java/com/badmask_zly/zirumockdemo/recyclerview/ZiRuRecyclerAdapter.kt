@@ -100,11 +100,11 @@ class ZiRuRecyclerAdapter<T>()
         if (viewType != VIEW_HEADER && viewType != VIEW_FOOTER && viewType != VIEW_LOAD_MORE) {
             // 正常 item 的逻辑处理单独提出一个viewModel
             val itemVM: RecyclerItemVM<T> = holder.getItemVM()
-            itemVM.setData(viewModel.beans, viewModel.beans!![position], position)
+            itemVM.setData(viewModel.beans, viewModel.beans!![position - headerCount], position - headerCount)
             holder.mBinding.setVariable(BR.itemViewModel, itemVM)
             //为正常 item 增加点击监听
             holder.mBinding.root.isClickable = true
-            holder.mBinding.root.setOnClickListener { viewModel.onItemClick(WeakReference(it), viewModel.beans!![position], position) }
+            holder.mBinding.root.setOnClickListener { viewModel.onItemClick(WeakReference(it), viewModel.beans!![position - headerCount], position - headerCount) }
         } else {
             //header、footer、loadMore 的 view 处理都在外层 viewModel 中处理
             holder.mBinding.setVariable(BR.viewModel, viewModel)
@@ -229,7 +229,10 @@ class ZiRuRecyclerAdapter<T>()
          */
         override fun onItemRangeInserted(sender: ObservableList<T>?, positionStart: Int, itemCount: Int) {
             val adapter = adapterRef.get()
-            adapter!!.notifyItemRangeInserted(positionStart + 1, itemCount)
+            adapter!!.showHeaderView = true
+            adapter.showFooterView = true
+            adapter.showLoadingMoreView = false
+            adapter!!.notifyItemRangeInserted(positionStart + adapter.headerCount + 1, itemCount)
         }
 
     }
